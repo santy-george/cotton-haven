@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cotton Haven — Design Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ════════════════════════════════════
+   COTTON HAVEN — DESIGN SYSTEM TOKENS
+   ════════════════════════════════════ */
+:root {
+  /* — Colour Palette — */
+  --ink:       #0C1B2B;          /* Primary text / dark navy */
+  --ink-60:    rgba(12,27,43,.6);
+  --ink-30:    rgba(12,27,43,.3);
+  --ink-10:    rgba(12,27,43,.07);
+
+  --azure:     #1A5F8E;          /* Brand blue — CTAs, links, accents */
+  --azure-d:   #155a8c;          /* Darker blue — hover state */
+  --azure-xl:  #EBF4FB;          /* Light blue tint — bg fills */
+
+  --gold:      #B8892A;          /* Accent gold — highlights, badges */
+  --gold-bg:   #F5EDD8;          /* Light gold tint */
+
+  --cream:     #F8F5F0;          /* Off-white section bg */
+  --white:     #FFFFFF;
+
+  --border:    rgba(12,27,43,.10);
+  --border-s:  rgba(12,27,43,.18);
+
+  /* — Radius — */
+  --r:    4px;
+  --rlg:  8px;
+
+  /* — Easing — */
+  --ease: cubic-bezier(.25,.46,.45,.94);
+}
+
+/* ══ GUIDE PAGE STYLES ══ */
+*,::before,::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body { font-family:"DM Sans",sans-serif; color:var(--ink); background:#f0f0f0; -webkit-font-smoothing:antialiased; }
+a { text-decoration:none; color:inherit; }
+
+.guide-wrap { max-width:1100px; margin:0 auto; padding:48px 32px 80px; }
+
+/* guide chrome */
+.guide-cover { background:var(--ink); border-radius:12px; padding:48px; margin-bottom:48px; position:relative; overflow:hidden; }
+.guide-cover::before { content:""; position:absolute; top:-100px; right:-100px; width:400px; height:400px; border-radius:50%; background:rgba(26,95,142,.18); pointer-events:none; }
+.guide-cover::after  { content:""; position:absolute; bottom:-80px; left:-80px; width:300px; height:300px; border-radius:50%; background:rgba(184,137,42,.09); pointer-events:none; }
+.guide-cover-inner { position:relative; z-index:1; }
+.guide-cover .logo-name { font-family:"Cormorant Garamond",serif; font-size:28px; font-weight:600; color:#fff; }
+.guide-cover .logo-sub  { font-size:9px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--azure); }
+.guide-cover h1 { font-family:"Cormorant Garamond",serif; font-size:clamp(32px,4vw,52px); font-weight:600; color:#fff; margin-top:20px; line-height:1.08; }
+.guide-cover p  { font-size:14px; color:rgba(255,255,255,.55); margin-top:10px; line-height:1.7; max-width:540px; }
+.guide-meta { display:flex; gap:20px; flex-wrap:wrap; margin-top:24px; padding-top:20px; border-top:1px solid rgba(255,255,255,.08); font-size:11.5px; color:rgba(255,255,255,.38); }
+
+.section-label { font-size:10px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--azure); margin-bottom:20px; display:flex; align-items:center; gap:10px; }
+.section-label::before { content:""; display:block; width:24px; height:1.5px; background:var(--azure); }
+.guide-section { margin-bottom:48px; }
+h2.guide-h2 { font-family:"Cormorant Garamond",serif; font-size:28px; font-weight:600; color:var(--ink); margin-bottom:20px; }
+.guide-card { background:#fff; border-radius:var(--rlg); border:1px solid var(--border); padding:28px; margin-bottom:16px; }
+.guide-card h3 { font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-30); margin-bottom:16px; }
+
+/* ══ COLOUR SWATCHES ══ */
+.swatches { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:12px; }
+.swatch { border-radius:var(--rlg); overflow:hidden; border:1px solid var(--border); }
+.swatch-color { height:70px; }
+.swatch-info { padding:10px 12px; background:#fff; }
+.swatch-name  { font-size:12px; font-weight:600; color:var(--ink); }
+.swatch-hex   { font-size:10.5px; color:var(--ink-60); margin-top:2px; font-family:monospace; }
+.swatch-role  { font-size:10px; color:var(--ink-30); margin-top:3px; }
+
+/* ══ TYPOGRAPHY SPECIMENS ══ */
+.type-row { padding:16px 0; border-bottom:1px solid var(--border); display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+.type-row:last-child { border-bottom:none; }
+.type-meta { flex-shrink:0; text-align:right; font-size:10.5px; color:var(--ink-30); font-family:monospace; line-height:1.6; }
+.t-display { font-family:"Cormorant Garamond",serif; font-size:clamp(42px,5.2vw,68px); font-weight:600; line-height:1.05; letter-spacing:-.015em; color:var(--ink); }
+.t-display em { font-style:italic; color:var(--azure); }
+.t-h1 { font-family:"Cormorant Garamond",serif; font-size:clamp(30px,4vw,50px); font-weight:600; line-height:1.08; letter-spacing:-.01em; color:var(--ink); }
+.t-h2 { font-family:"Cormorant Garamond",serif; font-size:clamp(28px,3.5vw,44px); font-weight:600; line-height:1.12; letter-spacing:-.01em; color:var(--ink); }
+.t-h3 { font-family:"Cormorant Garamond",serif; font-size:clamp(22px,2.8vw,32px); font-weight:600; line-height:1.15; color:var(--ink); }
+.t-h4 { font-size:17px; font-weight:600; color:var(--ink); }
+.t-lead { font-size:clamp(16px,1.7vw,19px); font-weight:300; color:var(--ink-60); letter-spacing:.04em; line-height:1.6; }
+.t-body { font-size:14.5px; color:var(--ink-60); line-height:1.8; }
+.t-body-sm { font-size:13.5px; color:var(--ink-60); line-height:1.8; }
+.t-small { font-size:12.5px; color:var(--ink-60); line-height:1.7; }
+.t-eyebrow { font-size:11px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--azure); display:inline-flex; align-items:center; gap:10px; }
+.t-eyebrow::before { content:""; display:block; width:24px; height:1.5px; background:var(--azure); }
+.t-label { font-size:10.5px; font-weight:600; letter-spacing:.07em; text-transform:uppercase; color:var(--ink); }
+.t-caption { font-size:10px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-30); }
+
+/* ══ BUTTONS ══ */
+.btn-row { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:16px; }
+.btn-primary  { font-size:14px; font-weight:600; color:#fff; background:var(--azure); padding:13px 26px; border-radius:var(--r); transition:.2s; display:inline-flex; align-items:center; gap:7px; border:none; cursor:pointer; }
+.btn-primary:hover { background:var(--azure-d); transform:translateY(-1px); box-shadow:rgba(26,95,142,.28) 0 6px 18px; }
+.btn-primary svg { width:14px; height:14px; transition:transform .2s; }
+.btn-primary:hover svg { transform:translateX(3px); }
+.btn-secondary { font-size:14px; font-weight:500; color:var(--ink); padding:12px 22px; border-radius:var(--r); border:1.5px solid var(--border-s); transition:.2s; display:inline-flex; align-items:center; gap:7px; background:none; cursor:pointer; }
+.btn-secondary:hover { border-color:var(--azure); color:var(--azure); }
+.btn-white { font-size:14px; font-weight:600; background:#fff; color:var(--azure); padding:13px 26px; border-radius:var(--r); transition:.2s; display:inline-flex; align-items:center; gap:7px; border:none; cursor:pointer; }
+.btn-white:hover { background:rgb(240,247,255); transform:translateY(-1px); }
+.btn-ol-white { font-size:14px; font-weight:500; color:rgba(255,255,255,.8); padding:12px 22px; border-radius:var(--r); border:1px solid rgba(255,255,255,.25); transition:.2s; display:inline-flex; align-items:center; gap:7px; background:none; cursor:pointer; }
+.btn-ol-white:hover { border-color:rgba(255,255,255,.5); color:#fff; }
+.btn-cta { font-size:13px; font-weight:600; color:#fff; background:var(--azure); padding:9px 18px; border-radius:var(--r); transition:.2s; display:inline-flex; align-items:center; gap:6px; border:none; cursor:pointer; }
+.btn-enquire { font-size:12px; font-weight:600; color:#fff; background:var(--azure); padding:9px 12px; border-radius:var(--r); border:none; cursor:pointer; transition:.2s; }
+.btn-enquire:hover { background:var(--azure-d); }
+.btn-sample { font-size:12px; font-weight:500; color:var(--azure); padding:9px 12px; border-radius:var(--r); border:1.5px solid rgba(26,95,142,.3); cursor:pointer; transition:.2s; background:#fff; }
+.btn-sample:hover { background:var(--azure-xl); }
+.dark-bg { background:var(--ink); padding:20px; border-radius:var(--rlg); }
+
+/* ══ COMPONENT SAMPLES ══ */
+
+/* Eyebrow */
+.eyebrow { display:inline-flex; align-items:center; gap:10px; font-size:11px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--azure); }
+.eyebrow::before { content:""; display:block; width:24px; height:1.5px; background:var(--azure); }
+
+/* Section Titles */
+.section-title { font-family:"Cormorant Garamond",serif; font-size:clamp(28px,3.5vw,44px); font-weight:600; line-height:1.12; letter-spacing:-.01em; color:var(--ink); margin-top:12px; }
+.section-sub { font-size:15px; color:var(--ink-60); line-height:1.7; margin-top:12px; }
+
+/* Industry Card */
+.ind-card { border-radius:var(--rlg); overflow:hidden; border:1px solid var(--border); background:#fff; transition:all .3s var(--ease); cursor:pointer; }
+.ind-card:hover { transform:translateY(-5px); box-shadow:rgba(12,27,43,.1) 0 16px 40px; border-color:rgba(26,95,142,.3); }
+.ind-img { height:160px; overflow:hidden; background:var(--cream); display:flex; align-items:center; justify-content:center; color:var(--ink-30); font-size:11px; }
+.ind-body { padding:15px 16px 16px; }
+.ind-name { font-size:13.5px; font-weight:600; color:var(--ink); margin-bottom:5px; }
+.ind-desc { font-size:12px; color:var(--ink-60); line-height:1.5; margin-bottom:10px; }
+.ind-link { font-size:11.5px; font-weight:600; color:var(--azure); display:inline-flex; align-items:center; gap:4px; background:none; border:none; font-family:inherit; padding:0; cursor:pointer; }
+
+/* Feature Card */
+.feat-card { padding:28px 24px; border-radius:var(--rlg); border:1px solid var(--border); background:#fff; transition:all .3s var(--ease); position:relative; overflow:hidden; }
+.feat-card::after { content:""; position:absolute; bottom:0; left:0; right:0; height:3px; background:var(--azure); transform:scaleX(0); transform-origin:left; transition:transform .3s var(--ease); }
+.feat-card:hover { transform:translateY(-3px); box-shadow:rgba(12,27,43,.07) 0 12px 30px; }
+.feat-card:hover::after { transform:scaleX(1); }
+.feat-icon { width:42px; height:42px; border-radius:var(--rlg); background:var(--azure-xl); margin-bottom:16px; display:flex; align-items:center; justify-content:center; }
+.feat-icon svg { width:20px; height:20px; color:var(--azure); }
+.feat-title { font-size:15.5px; font-weight:600; color:var(--ink); margin-bottom:8px; }
+.feat-body { font-size:13px; color:var(--ink-60); line-height:1.75; }
+
+/* Testimonial Card */
+.testi-card { padding:24px; border-radius:var(--rlg); border:1px solid var(--border); background:#fff; transition:border-color .2s; }
+.testi-card:hover { border-color:rgba(26,95,142,.2); }
+.testi-quote { font-family:"Cormorant Garamond",serif; font-style:italic; font-size:16px; color:var(--ink); line-height:1.7; margin-bottom:16px; }
+.testi-author { display:flex; align-items:center; gap:10px; }
+.testi-av { width:32px; height:32px; border-radius:50%; background:var(--azure-xl); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:11px; font-weight:600; color:var(--azure); }
+.testi-name { font-size:12.5px; font-weight:600; color:var(--ink); line-height:1.2; }
+.testi-role { font-size:11px; color:var(--ink-60); }
+
+/* Why Item */
+.why-item { display:flex; align-items:flex-start; gap:11px; padding:14px; border-radius:var(--rlg); border:1px solid var(--border); background:#fff; transition:.2s; }
+.why-item:hover { border-color:rgba(26,95,142,.25); background:var(--azure-xl); }
+.why-icon { width:30px; height:30px; border-radius:var(--r); flex-shrink:0; background:var(--azure-xl); display:flex; align-items:center; justify-content:center; }
+.why-icon svg { width:15px; height:15px; color:var(--azure); }
+.why-text { font-size:12.5px; font-weight:500; color:var(--ink); line-height:1.4; padding-top:5px; }
+
+/* Metric */
+.metric-num { font-family:"Cormorant Garamond",serif; font-size:clamp(24px,2.8vw,36px); font-weight:600; color:var(--ink); line-height:1; }
+.metric-num sub { font-size:.55em; color:var(--azure); font-style:normal; }
+.metric-label { font-size:10.5px; color:var(--ink-60); margin-top:3px; line-height:1.4; }
+
+/* Cert Badge */
+.cert-badge { display:inline-flex; align-items:center; gap:6px; padding:7px 12px; border-radius:var(--r); background:var(--azure-xl); border:1px solid rgba(26,95,142,.18); font-size:11.5px; font-weight:600; color:var(--azure); }
+
+/* Cat Tag */
+.cat-tag { font-size:11.5px; font-weight:500; color:var(--azure); padding:5px 12px; border-radius:20px; background:var(--azure-xl); border:1px solid rgba(26,95,142,.15); }
+
+/* Fabric Chip */
+.fabric-chip { font-size:10.5px; color:var(--ink-60); padding:3px 8px; border-radius:3px; background:var(--cream); border:1px solid var(--border); }
+
+/* Product Badge */
+.product-badge-demo { font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#fff; background:var(--azure); padding:4px 9px; border-radius:3px; display:inline-block; }
+
+/* Form Elements */
+label.fl { font-size:10.5px; font-weight:600; letter-spacing:.07em; text-transform:uppercase; color:var(--ink); display:block; margin-bottom:5px; }
+input.fi, select.fi, textarea.fi { font-family:"DM Sans",sans-serif; font-size:13.5px; color:var(--ink); background:var(--cream); border:1.5px solid var(--border); border-radius:var(--r); padding:10px 12px; width:100%; outline:none; transition:border-color .2s, background .2s; appearance:none; }
+input.fi:focus, select.fi:focus, textarea.fi:focus { border-color:var(--azure); background:#fff; box-shadow:rgba(26,95,142,.1) 0 0 0 3px; }
+textarea.fi { resize:vertical; min-height:96px; }
+
+/* Process Step */
+.proc-dot { width:50px; height:50px; border-radius:50%; background:#fff; border:1.5px solid var(--border); display:flex; align-items:center; justify-content:center; margin:0 auto 12px; transition:.25s; }
+.proc-dot svg { width:18px; height:18px; color:var(--ink-60); }
+.proc-title-sm { font-size:11px; font-weight:600; color:var(--ink); line-height:1.3; margin-bottom:3px; text-align:center; }
+.proc-desc-sm { font-size:10px; color:var(--ink-60); line-height:1.4; text-align:center; }
+
+/* Nav / Header */
+.demo-header { background:rgba(255,255,255,.97); border:1px solid var(--border); border-radius:var(--rlg); padding:15px 20px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+.nav-link-demo { font-size:12.5px; font-weight:500; color:var(--ink-60); padding:7px 11px; border-radius:var(--r); background:none; border:none; cursor:pointer; font-family:inherit; }
+.nav-link-demo:hover,.nav-link-demo.active { color:var(--azure); background:var(--azure-xl); }
+
+/* Topbar */
+.demo-topbar { background:var(--ink); padding:8px 16px; border-radius:var(--rlg); font-size:12px; color:rgba(255,255,255,.6); display:flex; justify-content:space-between; align-items:center; }
+.demo-topbar a { color:rgba(255,255,255,.6); }
+.demo-topbar a:hover { color:#fff; }
+
+/* Footer colour band */
+.footer-demo { background:rgb(8,15,24); border-radius:var(--rlg); padding:24px 28px; }
+.footer-logo-name { font-family:"Cormorant Garamond",serif; font-size:21px; font-weight:600; color:#fff; }
+.footer-logo-sub  { font-size:9px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.35); }
+.footer-desc { font-size:12.5px; color:rgba(255,255,255,.4); line-height:1.7; margin-top:10px; max-width:200px; }
+.footer-gold { font-size:10.5px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); margin-top:12px; }
+.footer-col-title-demo { font-size:10.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.78); margin-bottom:10px; }
+.footer-link-demo { font-size:12.5px; color:rgba(255,255,255,.4); display:block; margin-bottom:6px; }
+.footer-link-demo:hover { color:rgba(255,255,255,.85); }
+
+/* CTA Band */
+.cta-demo { background:var(--ink); border-radius:var(--rlg); padding:40px; text-align:center; position:relative; overflow:hidden; }
+.cta-demo::before { content:""; position:absolute; top:-80px; right:-80px; width:300px; height:300px; border-radius:50%; background:rgba(26,95,142,.12); }
+.cta-demo::after  { content:""; position:absolute; bottom:-60px; left:-60px; width:240px; height:240px; border-radius:50%; background:rgba(184,137,42,.07); }
+.cta-demo-inner { position:relative; z-index:1; }
+.cta-label-demo { display:inline-block; font-size:11px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:12px; }
+.cta-title-demo { font-family:"Cormorant Garamond",serif; font-size:clamp(26px,4vw,44px); font-weight:600; color:#fff; line-height:1.08; margin-bottom:10px; letter-spacing:-.01em; }
+.cta-body-demo { font-size:15px; color:rgba(255,255,255,.58); line-height:1.75; margin-bottom:24px; }
+
+/* Spacing scale */
+.sp-row { display:flex; align-items:flex-end; gap:8px; margin-bottom:12px; }
+.sp-block { background:var(--azure-xl); border:1px solid rgba(26,95,142,.2); border-radius:2px; }
+.sp-info { font-size:10.5px; color:var(--ink-60); font-family:monospace; }
+
+/* Grid */
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.three-col { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.four-col  { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+
+/* Page Banner */
+.page-banner-demo { border-radius:var(--rlg); overflow:hidden; height:180px; background:linear-gradient(to top, rgba(12,27,43,.85) 0%, rgba(12,27,43,.4) 60%, rgba(12,27,43,.2) 100%), var(--cream); display:flex; align-items:flex-end; padding:24px; }
+.page-banner-title-demo { font-family:"Cormorant Garamond",serif; font-size:clamp(28px,4.5vw,48px); font-weight:600; color:#fff; line-height:1.1; }
+
+/* Breadcrumb */
+.breadcrumb-demo { display:flex; align-items:center; gap:8px; font-size:13px; color:rgba(255,255,255,.55); margin-bottom:6px; }
+.breadcrumb-demo span { color:rgba(255,255,255,.35); }
+
+/* Market Strip */
+.market-strip-demo { background:var(--azure); padding:10px 16px; border-radius:var(--rlg); display:flex; align-items:center; justify-content:center; gap:20px; flex-wrap:wrap; }
+.mkt-item-demo { font-size:12.5px; font-weight:500; color:rgba(255,255,255,.88); display:flex; align-items:center; gap:6px; }
+.mkt-sep-demo { color:rgba(255,255,255,.25); }
+
+/* Scrollbar styling */
+::-webkit-scrollbar { width:6px; height:6px; }
+::-webkit-scrollbar-track { background:#f0f0f0; }
+::-webkit-scrollbar-thumb { background:var(--border-s); border-radius:4px; }
+</style>
+</head>
+<body>
+
+<div class="guide-wrap">
+
+  <!-- COVER -->
+  <div class="guide-cover">
+    <div class="guide-cover-inner">
+      <div>
+        <div class="logo-name">Cotton Haven</div>
+        <div class="logo-sub">Australia</div>
+      </div>
+      <h1>Design System<br><em style="font-style:italic;color:var(--azure)">& Style Guide</em></h1>
+      <p>A complete reference for colours, typography, spacing, components and patterns used across the Cotton Haven website. Use this guide as the single source of truth when building new pages.</p>
+      <div class="guide-meta">
+        <span>Version 1.0</span>
+        <span>·</span>
+        <span>Source: Landing Page</span>
+        <span>·</span>
+        <span>Fonts: Cormorant Garamond + DM Sans (Google Fonts)</span>
+        <span>·</span>
+        <span>Max container: 1200px</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══ 1. COLOURS ══ -->
+  <div class="guide-section">
+    <div class="section-label">01</div>
+    <h2 class="guide-h2">Colour Palette</h2>
+
+    <div class="guide-card">
+      <h3>Brand Colours</h3>
+      <div class="swatches">
+        <div class="swatch">
+          <div class="swatch-color" style="background:#0C1B2B"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Ink</div>
+            <div class="swatch-hex">--ink · #0C1B2B</div>
+            <div class="swatch-role">Primary text, dark backgrounds</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#1A5F8E"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Azure</div>
+            <div class="swatch-hex">--azure · #1A5F8E</div>
+            <div class="swatch-role">CTAs, links, brand accent</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#155a8c"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Azure Dark</div>
+            <div class="swatch-hex">--azure-d · #155a8c</div>
+            <div class="swatch-role">Hover state for azure</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#EBF4FB"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Azure Light</div>
+            <div class="swatch-hex">--azure-xl · #EBF4FB</div>
+            <div class="swatch-role">Tinted bg fills, icon bg</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#B8892A"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Gold</div>
+            <div class="swatch-hex">--gold · #B8892A</div>
+            <div class="swatch-role">Accents, badges, CTA labels on dark</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#F5EDD8"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Gold Bg</div>
+            <div class="swatch-hex">--gold-bg · #F5EDD8</div>
+            <div class="swatch-role">Accent card backgrounds</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#F8F5F0"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Cream</div>
+            <div class="swatch-hex">--cream · #F8F5F0</div>
+            <div class="swatch-role">Alternate section backgrounds</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#FFFFFF; border:1px solid #eee;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">White</div>
+            <div class="swatch-hex">--white · #FFFFFF</div>
+            <div class="swatch-role">Card backgrounds, body bg</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:rgb(8,15,24)"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Footer Dark</div>
+            <div class="swatch-hex">rgb(8,15,24)</div>
+            <div class="swatch-role">Footer background only</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="guide-card">
+      <h3>Transparency Variants</h3>
+      <div class="swatches">
+        <div class="swatch">
+          <div class="swatch-color" style="background:rgba(12,27,43,.6)"></div>
+          <div class="swatch-info"><div class="swatch-name">Ink 60%</div><div class="swatch-hex">--ink-60</div><div class="swatch-role">Body text, descriptions</div></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:rgba(12,27,43,.3)"></div>
+          <div class="swatch-info"><div class="swatch-name">Ink 30%</div><div class="swatch-hex">--ink-30</div><div class="swatch-role">Placeholders, faint labels</div></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:rgba(12,27,43,.10)"></div>
+          <div class="swatch-info"><div class="swatch-name">Border</div><div class="swatch-hex">--border · ink 10%</div><div class="swatch-role">Default card/divider borders</div></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:rgba(12,27,43,.18)"></div>
+          <div class="swatch-info"><div class="swatch-name">Border Strong</div><div class="swatch-hex">--border-s · ink 18%</div><div class="swatch-role">Secondary button borders</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══ 2. TYPOGRAPHY ══ -->
+  <div class="guide-section">
+    <div class="section-label">02</div>
+    <h2 class="guide-h2">Typography</h2>
+
+    <div class="guide-card">
+      <h3>Typefaces</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+        <div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:var(--ink);line-height:1.1;">Cormorant<br><em style="color:var(--azure);font-style:italic;">Garamond</em></div>
+          <div style="font-size:11px;color:var(--ink-30);margin-top:10px;font-family:monospace;">font-family:"Cormorant Garamond",serif<br>Weights: 400, 600 · Styles: normal, italic<br>Use: All headings, display text, metrics</div>
+        </div>
+        <div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:28px;font-weight:600;color:var(--ink);line-height:1.2;">DM Sans<br><span style="font-weight:300;color:var(--ink-60);">Body & UI</span></div>
+          <div style="font-size:11px;color:var(--ink-30);margin-top:10px;font-family:monospace;">font-family:"DM Sans",sans-serif<br>Weights: 300, 400, 500, 600<br>Use: All body text, labels, navigation, buttons</div>
+        </div>
+      </div>
+      <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);font-size:12px;color:var(--ink-60);">
+        Google Fonts import: <code style="font-family:monospace;background:var(--cream);padding:2px 6px;border-radius:3px;">Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600 &amp; DM+Sans:wght@300;400;500;600</code>
+      </div>
+    </div>
+
+    <div class="guide-card">
+      <h3>Type Scale</h3>
+
+      <div class="type-row">
+        <div class="t-display">Uniform Manufacturing<br><em>Without Limits</em></div>
+        <div class="type-meta">Hero Display<br>Cormorant Garamond 600<br>clamp(42px, 5.2vw, 68px)<br>line-height: 1.05<br>letter-spacing: –0.015em</div>
+      </div>
+
+      <div class="type-row">
+        <div class="t-h1">Ready to Manufacture<br>Without Compromise</div>
+        <div class="type-meta">H1 / CTA Title<br>Cormorant Garamond 600<br>clamp(30px, 4vw, 50px)<br>line-height: 1.08<br>letter-spacing: –0.01em</div>
+      </div>
+
+      <div class="type-row">
+        <div class="t-h2">Why Australian Businesses<br>Choose Cotton Haven</div>
+        <div class="type-meta">H2 / Section Title<br>Cormorant Garamond 600<br>clamp(28px, 3.5vw, 44px)<br>line-height: 1.12<br>letter-spacing: –0.01em</div>
+      </div>
+
+      <div class="type-row">
+        <div class="t-h3">Corporate Uniform Solutions</div>
+        <div class="type-meta">H3 / Category Title<br>Cormorant Garamond 600<br>clamp(22px, 2.8vw, 32px)<br>line-height: 1.15</div>
+      </div>
+
+      <div class="type-row">
+        <div class="t-h4">Request a Free Sample Kit</div>
+        <div class="type-meta">H4 / Card Title<br>DM Sans 600<br>17px</div>
+      </div>
+
+      <div class="type-row">
+        <div class="t-eyebrow">Australian-Owned · 30+ Years Manufacturing</div>
+        <div class="type-meta">Eyebrow / Label<br>DM Sans 600<br>11px · 0.18em tracking<br>UPPERCASE · azure colour<br>Preceded by 24×1.5px rule</div>
+      </div>
+
+      <div class="type-row">
+        <div class="t-lead">Designed. Manufactured. Delivered.</div>
+        <div class="type-meta">Lead / Subtitle<br>DM Sans 300<br>clamp(16px, 1.7vw, 19px)<br>letter-spacing: 0.04em</div>
+      </div>
+
+      <div class="type-row">
+        <div class="t-body">Cotton Haven Australia is the international division of Cotton Haven Apparels — a trusted apparel manufacturer with over 30 years of experience. We supply premium corporate, healthcare, school, hospitality and workwear to businesses across Australia, New Zealand, UK, USA and Europe.</div>
+        <div class="type-meta">Body<br>DM Sans 400<br>14.5px<br>line-height: 1.8</div>
+      </div>
+
+      <div class="type-row">
+        <div class="t-body-sm">Each garment undergoes a comprehensive inspection process aligned with international quality standards before shipment.</div>
+        <div class="type-meta">Body Small<br>DM Sans 400<br>13.5px<br>line-height: 1.8</div>
+      </div>
+
+      <div class="type-row">
+        <div class="t-small">Factory-direct supply to Australia, NZ, UK, USA and Europe.</div>
+        <div class="type-meta">Small / Card Text<br>DM Sans 400<br>12.5px<br>line-height: 1.7</div>
+      </div>
+
+      <div class="type-row">
+        <div class="t-label">First Name</div>
+        <div class="type-meta">Form Label<br>DM Sans 600<br>10.5px · 0.07em tracking<br>UPPERCASE</div>
+      </div>
+
+      <div class="type-row">
+        <div class="t-caption">Our Range</div>
+        <div class="type-meta">Caption / Nav Group<br>DM Sans 700<br>10–10.5px · 0.1em tracking<br>UPPERCASE</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══ 3. SPACING & LAYOUT ══ -->
+  <div class="guide-section">
+    <div class="section-label">03</div>
+    <h2 class="guide-h2">Spacing & Layout</h2>
+
+    <div class="guide-card">
+      <h3>Spacing Scale</h3>
+      <div class="sp-row"><div class="sp-block" style="width:4px;height:4px;"></div><div class="sp-info">4px — micro gap (icon spacing, badge inner padding)</div></div>
+      <div class="sp-row"><div class="sp-block" style="width:8px;height:8px;"></div><div class="sp-info">8px — xs (topbar padding, small gaps)</div></div>
+      <div class="sp-row"><div class="sp-block" style="width:12px;height:12px;"></div><div class="sp-info">12px — sm (button gap, tight spacing)</div></div>
+      <div class="sp-row"><div class="sp-block" style="width:18px;height:18px;"></div><div class="sp-info">18px — md (metric padding, grid gap small)</div></div>
+      <div class="sp-row"><div class="sp-block" style="width:24px;height:24px;"></div><div class="sp-info">24px — lg (testi card padding, footer padding)</div></div>
+      <div class="sp-row"><div class="sp-block" style="width:32px;height:32px;"></div><div class="sp-info">32px — xl (container padding, form card padding)</div></div>
+      <div class="sp-row"><div class="sp-block" style="width:40px;height:16px;"></div><div class="sp-info">40px — 2xl (hero metrics margin-top)</div></div>
+      <div class="sp-row"><div class="sp-block" style="width:52px;height:16px;"></div><div class="sp-info">52px — 3xl (mobile section padding)</div></div>
+      <div class="sp-row"><div class="sp-block" style="width:64px;height:16px;"></div><div class="sp-info">64px — 4xl (about grid gap)</div></div>
+      <div class="sp-row"><div class="sp-block" style="width:88px;height:16px;"></div><div class="sp-info">88px — 5xl (desktop section padding: padding: 88px 0)</div></div>
+    </div>
+
+    <div class="guide-card">
+      <h3>Layout Rules</h3>
+      <div style="font-size:13.5px;color:var(--ink-60);line-height:2;">
+        <div><strong style="color:var(--ink)">Container:</strong> max-width: 1200px · margin: 0 auto · padding: 0 32px (mobile: 0 18px)</div>
+        <div><strong style="color:var(--ink)">Radius (--r):</strong> 4px — buttons, badges, form inputs</div>
+        <div><strong style="color:var(--ink)">Radius (--rlg):</strong> 8px — cards, panels, dropdowns, images</div>
+        <div><strong style="color:var(--ink)">Section padding:</strong> 88px top/bottom desktop · 52px mobile</div>
+        <div><strong style="color:var(--ink)">Hero:</strong> min-height 86vh · 2-column grid (1fr 1fr) · left col padding 56px right</div>
+        <div><strong style="color:var(--ink)">Grid gap (cards):</strong> 18–22px standard · 12–14px compact</div>
+        <div><strong style="color:var(--ink)">Easing:</strong> cubic-bezier(.25,.46,.45,.94) — used on all card/hover transitions</div>
+        <div><strong style="color:var(--ink)">Transition speed:</strong> 0.2s standard · 0.3s cards/complex · 0.65s reveal animations</div>
+      </div>
+    </div>
+
+    <div class="guide-card">
+      <h3>Breakpoints</h3>
+      <div style="font-size:13.5px;color:var(--ink-60);line-height:2.2;">
+        <div><strong style="color:var(--ink)">≤ 1100px:</strong> Hide main nav (show hamburger) · 2-col industries/related · 1-col why-layout · 4→2 process steps · 2-col footer</div>
+        <div><strong style="color:var(--ink)">≤ 880px:</strong> 1-col hero (hide hero image) · 1-col about/form · 1-col features/values/testimonials</div>
+        <div><strong style="color:var(--ink)">≤ 768px:</strong> 18px container padding · 2-col offices · 1-col products/fabrics · section 52px padding</div>
+        <div><strong style="color:var(--ink)">≤ 480px:</strong> 1-col industries/offices/related · stack hero actions vertically</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══ 4. BUTTONS ══ -->
+  <div class="guide-section">
+    <div class="section-label">04</div>
+    <h2 class="guide-h2">Buttons</h2>
+
+    <div class="guide-card">
+      <h3>Button Variants — Light Backgrounds</h3>
+      <div class="btn-row">
+        <button class="btn-primary">Request a Quote <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></button>
+        <span style="font-size:11px;color:var(--ink-30);font-family:monospace;">.btn-primary — azure bg, white text, 13/26px padding</span>
+      </div>
+      <div class="btn-row">
+        <button class="btn-secondary">Explore Our Range</button>
+        <span style="font-size:11px;color:var(--ink-30);font-family:monospace;">.btn-secondary — transparent bg, ink text, border-s border</span>
+      </div>
+      <div class="btn-row">
+        <button class="btn-cta">Request a Quote <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></button>
+        <span style="font-size:11px;color:var(--ink-30);font-family:monospace;">.btn-cta — nav version, 9/18px padding, 13px font</span>
+      </div>
+      <div class="btn-row" style="margin-top:8px;">
+        <button class="btn-enquire">Enquire Now</button>
+        <button class="btn-sample">Request Sample</button>
+        <span style="font-size:11px;color:var(--ink-30);font-family:monospace;">.btn-enquire / .btn-sample — product card paired buttons</span>
+      </div>
+    </div>
+
+    <div class="guide-card">
+      <h3>Button Variants — Dark Backgrounds</h3>
+      <div class="dark-bg">
+        <div class="btn-row">
+          <button class="btn-white">Request a Quote <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></button>
+          <span style="font-size:11px;color:rgba(255,255,255,.4);font-family:monospace;">.btn-white — white bg, azure text (CTA band primary)</span>
+        </div>
+        <div class="btn-row" style="margin-top:8px;">
+          <button class="btn-ol-white">View Our Range</button>
+          <span style="font-size:11px;color:rgba(255,255,255,.4);font-family:monospace;">.btn-ol-white — ghost white border (CTA band secondary)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══ 5. COMPONENTS ══ -->
+  <div class="guide-section">
+    <div class="section-label">05</div>
+    <h2 class="guide-h2">Components</h2>
+
+    <!-- Topbar -->
+    <div class="guide-card">
+      <h3>Topbar</h3>
+      <div class="demo-topbar">
+        <div style="display:flex;align-items:center;gap:18px;">
+          <span style="display:flex;align-items:center;gap:5px;">
+            <svg width="11" height="11" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l6 5 6-5"></path><rect x="1" y="3" width="14" height="10" rx="1.5"></rect></svg>
+            <a href="#">info@cottonhaven.com</a>
+          </span>
+          <span style="width:1px;height:10px;background:rgba(255,255,255,.15);display:inline-block;"></span>
+          <span style="display:flex;align-items:center;gap:5px;">
+            <svg width="11" height="11" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3.5A1.5 1.5 0 013.5 2h1.2a.5.5 0 01.48.36l.8 2.8a.5.5 0 01-.14.52l-1.1 1a8 8 0 004.58 4.58l1-.1a.5.5 0 01.52.14l2.8.8a.5.5 0 01.36.48v1.2A1.5 1.5 0 0112.5 14C6.7 14 2 9.3 2 3.5z"></path></svg>
+            <a href="#">1300 171 709 (AU)</a>
+          </span>
+          <span style="width:1px;height:10px;background:rgba(255,255,255,.15);display:inline-block;"></span>
+          <span>Mon–Fri 09:00–18:00 IST</span>
+        </div>
+        <span>🇦🇺 Australian Owned &nbsp;·&nbsp; 🏭 India & Bangladesh Facilities</span>
+      </div>
+      <div style="font-size:11px;color:var(--ink-30);font-family:monospace;margin-top:10px;">bg: --ink · font: 12px DM Sans · text: white 60% · link hover: white 100%</div>
+    </div>
+
+    <!-- Header -->
+    <div class="guide-card">
+      <h3>Site Header / Navigation</h3>
+      <div class="demo-header">
+        <div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:600;color:var(--ink);line-height:1;">Cotton Haven</div>
+          <div style="font-size:9px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--azure);">Australia</div>
+        </div>
+        <nav style="display:flex;gap:1px;">
+          <button class="nav-link-demo active">Home</button>
+          <button class="nav-link-demo">About Us</button>
+          <button class="nav-link-demo">Our Range ▾</button>
+          <button class="nav-link-demo">Fabrics</button>
+          <button class="nav-link-demo">Manufacturing</button>
+          <button class="nav-link-demo">Contact Us</button>
+        </nav>
+        <button class="btn-cta">Request a Quote <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></button>
+      </div>
+      <div style="font-size:11px;color:var(--ink-30);font-family:monospace;margin-top:10px;">position:sticky top:0 · bg: white 97% + backdrop-filter:blur(12px) · border-bottom: --border · Logo: Cormorant 600 21px / Sub: DM Sans 600 9px uppercase azure · Nav: 12.5px DM Sans 500</div>
+    </div>
+
+    <!-- Market Strip -->
+    <div class="guide-card">
+      <h3>Market Strip</h3>
+      <div class="market-strip-demo">
+        <span class="mkt-item-demo">🇦🇺 Australia</span>
+        <span class="mkt-sep-demo">·</span>
+        <span class="mkt-item-demo">🇳🇿 New Zealand</span>
+        <span class="mkt-sep-demo">·</span>
+        <span class="mkt-item-demo">🇬🇧 United Kingdom</span>
+        <span class="mkt-sep-demo">·</span>
+        <span class="mkt-item-demo">🇺🇸 USA</span>
+        <span class="mkt-sep-demo">·</span>
+        <span class="mkt-item-demo">🇪🇺 Europe</span>
+      </div>
+      <div style="font-size:11px;color:var(--ink-30);font-family:monospace;margin-top:10px;">bg: --azure · padding: 13px 0 · font: 12.5px DM Sans 500 · text: white 88%</div>
+    </div>
+
+    <!-- Page Banner -->
+    <div class="guide-card">
+      <h3>Page Banner (Inner Pages)</h3>
+      <div class="page-banner-demo">
+        <div>
+          <div class="breadcrumb-demo"><span>Home</span><span>›</span><span style="color:rgba(255,255,255,.8)">Corporate Uniforms</span></div>
+          <div class="page-banner-title-demo">Corporate Uniforms</div>
+        </div>
+      </div>
+      <div style="font-size:11px;color:var(--ink-30);font-family:monospace;margin-top:10px;">height: 300px (220px mobile) · gradient overlay: ink 85%→40%→20% bottom-to-top · Title: Cormorant 600 clamp(36px,4.5vw,58px)</div>
+    </div>
+
+    <!-- Eyebrow + Section Header -->
+    <div class="guide-card">
+      <h3>Section Header Pattern</h3>
+      <div style="max-width:580px;text-align:center;margin:0 auto;">
+        <span class="eyebrow">Why Choose Us</span>
+        <div class="section-title">Quality Manufacturing<br><em style="font-style:italic;color:var(--azure)">Without Compromise</em></div>
+        <div class="section-sub">Every garment we produce meets the highest international standards, backed by 30+ years of manufacturing expertise across Australia, India and Bangladesh.</div>
+      </div>
+    </div>
+
+    <!-- Industry Card -->
+    <div class="guide-card">
+      <h3>Industry / Category Cards</h3>
+      <div class="four-col" style="grid-template-columns:repeat(auto-fill,minmax(180px,1fr))">
+        <div class="ind-card">
+          <div class="ind-img">[product image 160px height]</div>
+          <div class="ind-body">
+            <div class="ind-name">Corporate Uniforms</div>
+            <div class="ind-desc">Professional workwear tailored to your brand identity.</div>
+            <button class="ind-link">Explore Range <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" style="width:11px;height:11px"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></button>
+          </div>
+        </div>
+        <div class="ind-card">
+          <div class="ind-img">[product image 160px height]</div>
+          <div class="ind-body">
+            <div class="ind-name">Healthcare Uniforms</div>
+            <div class="ind-desc">Durable, hygienic solutions for medical environments.</div>
+            <button class="ind-link">Explore Range <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" style="width:11px;height:11px"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></button>
+          </div>
+        </div>
+      </div>
+      <div style="font-size:11px;color:var(--ink-30);font-family:monospace;margin-top:12px;">4-col desktop · 2-col ≤1100px · 1-col ≤480px · image 160px · hover: lift -5px + shadow + azure border</div>
+    </div>
+
+    <!-- Feature Card -->
+    <div class="guide-card">
+      <h3>Feature Cards (3-col grid)</h3>
+      <div class="three-col">
+        <div class="feat-card">
+          <div class="feat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:20px;height:20px"><path d="M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          </div>
+          <div class="feat-title">Factory-Direct Pricing</div>
+          <div class="feat-body">Cut out the middleman. Direct from our manufacturing facilities to your door.</div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:20px;height:20px"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+          </div>
+          <div class="feat-title">Minimum 1 Piece MOQ</div>
+          <div class="feat-body">No minimums. Order exactly what you need, when you need it.</div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:20px;height:20px"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"></path></svg>
+          </div>
+          <div class="feat-title">Global Delivery</div>
+          <div class="feat-body">Shipping to Australia, NZ, UK, USA and Europe from our facilities.</div>
+        </div>
+      </div>
+      <div style="font-size:11px;color:var(--ink-30);font-family:monospace;margin-top:12px;">padding: 28px 24px · icon: 42px azure-xl bg · hover: lift -3px + azure bottom border animation</div>
+    </div>
+
+    <!-- Why Item -->
+    <div class="guide-card">
+      <h3>Why Items (2-col grid)</h3>
+      <div class="two-col">
+        <div class="why-item">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:15px;height:15px"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          </div>
+          <div class="why-text">ISO 9001:2015 certified quality management systems</div>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:15px;height:15px"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          </div>
+          <div class="why-text">30–45 day lead times from approved design</div>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:15px;height:15px"><path d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A2 2 0 013 12V7a4 4 0 014-4z"></path></svg>
+          </div>
+          <div class="why-text">Full custom branding — embroidery, printing, woven labels</div>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:15px;height:15px"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945"></path></svg>
+          </div>
+          <div class="why-text">Factory-direct pricing with no hidden fees</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonial Card -->
+    <div class="guide-card">
+      <h3>Testimonial Cards (3-col grid)</h3>
+      <div class="three-col">
+        <div class="testi-card">
+          <div class="testi-quote">"The quality of the uniforms exceeded our expectations. Our staff love the comfort and the branding looks impeccable."</div>
+          <div class="testi-author">
+            <div class="testi-av">SC</div>
+            <div>
+              <div class="testi-name">Sarah Chen</div>
+              <div class="testi-role">HR Manager, Pacific Hotels</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-quote">"Seamless process from design to delivery. Cotton Haven handled everything professionally."</div>
+          <div class="testi-author">
+            <div class="testi-av">MR</div>
+            <div>
+              <div class="testi-name">Mark Roberts</div>
+              <div class="testi-role">Operations Director, MedFirst</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-quote">"Factory-direct pricing meant we could outfit our entire team within budget without compromising on quality."</div>
+          <div class="testi-author">
+            <div class="testi-av">JT</div>
+            <div>
+              <div class="testi-name">James Turner</div>
+              <div class="testi-role">Principal, Westbrook Academy</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Metrics -->
+    <div class="guide-card">
+      <h3>Metric Bar</h3>
+      <div style="display:flex;align-items:center;gap:0;padding-top:20px;border-top:1px solid var(--border);flex-wrap:wrap;">
+        <div style="flex:1;min-width:80px;padding:0 18px 0 0;">
+          <div class="metric-num">30<sub>+</sub></div>
+          <div class="metric-label">Years Experience</div>
+        </div>
+        <div style="flex:1;min-width:80px;padding:0 18px;border-left:1px solid var(--border);">
+          <div class="metric-num">8</div>
+          <div class="metric-label">Product Categories</div>
+        </div>
+        <div style="flex:1;min-width:80px;padding:0 18px;border-left:1px solid var(--border);">
+          <div class="metric-num">5</div>
+          <div class="metric-label">Global Markets</div>
+        </div>
+        <div style="flex:1;min-width:80px;padding:0 18px;border-left:1px solid var(--border);">
+          <div class="metric-num">1<sub>pc</sub></div>
+          <div class="metric-label">Min. Order Qty</div>
+        </div>
+      </div>
+      <div style="font-size:11px;color:var(--ink-30);font-family:monospace;margin-top:12px;">Cormorant 600 clamp(24px,2.8vw,36px) · sub: 0.55em azure · label: DM Sans 10.5px ink-60 · separator: 1px --border</div>
+    </div>
+
+    <!-- Chips & Badges -->
+    <div class="guide-card">
+      <h3>Chips, Tags & Badges</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;">
+        <span class="cert-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:13px;height:13px"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          ISO 9001:2015
+        </span>
+        <span class="cert-badge">OEKO-TEX® Standard 100</span>
+        <span class="cert-badge">GOTS Certified</span>
+        <span class="cert-badge">SA8000</span>
+      </div>
+      <div style="font-size:11px;color:var(--ink-30);font-family:monospace;margin-bottom:16px;">.cert-badge — azure-xl bg · azure-18% border · 11.5px DM Sans 600 azure</div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
+        <span class="cat-tag">Custom Embroidery</span>
+        <span class="cat-tag">Screen Printing</span>
+        <span class="cat-tag">Woven Labels</span>
+        <span class="cat-tag">Heat Transfer</span>
+      </div>
+      <div style="font-size:11px;color:var(--ink-30);font-family:monospace;margin-bottom:16px;">.cat-tag — pill shape (border-radius:20px) · azure-xl bg · 11.5px DM Sans 500</div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;">
+        <span class="fabric-chip">Cotton Twill</span>
+        <span class="fabric-chip">Poly-Cotton</span>
+        <span class="fabric-chip">Stretch Fabric</span>
+      </div>
+      <div style="font-size:11px;color:var(--ink-30);font-family:monospace;margin-bottom:16px;">.fabric-chip — cream bg · border · 10.5px DM Sans · used in product cards</div>
+
+      <div>
+        <span class="product-badge-demo">New Arrival</span>
+        &nbsp;
+        <span class="product-badge-demo">Best Seller</span>
+      </div>
+      <div style="font-size:11px;color:var(--ink-30);font-family:monospace;margin-top:8px;">.product-badge — absolute positioned top-left of product card · azure bg · 10px 700 uppercase</div>
+    </div>
+
+    <!-- Forms -->
+    <div class="guide-card">
+      <h3>Form Elements</h3>
+      <div style="max-width:480px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-bottom:13px;">
+          <div>
+            <label class="fl">First Name</label>
+            <input class="fi" type="text" placeholder="Jane">
+          </div>
+          <div>
+            <label class="fl">Last Name</label>
+            <input class="fi" type="text" placeholder="Smith">
+          </div>
+        </div>
+        <div style="margin-bottom:13px;">
+          <label class="fl">Email Address</label>
+          <input class="fi" type="email" placeholder="jane@company.com">
+        </div>
+        <div style="margin-bottom:13px;">
+          <label class="fl">Product Category</label>
+          <select class="fi">
+            <option>Corporate Uniforms</option>
+            <option>Healthcare Uniforms</option>
+            <option>School Uniforms</option>
+          </select>
+        </div>
+        <div style="margin-bottom:18px;">
+          <label class="fl">Message</label>
+          <textarea class="fi" placeholder="Tell us about your requirements..."></textarea>
+        </div>
+        <button class="btn-primary" style="width:100%;justify-content:center;padding:13px;font-size:14px;">Submit Enquiry</button>
+      </div>
+      <div style="font-size:11px;color:var(--ink-30);font-family:monospace;margin-top:14px;">label: 10.5px DM Sans 600 uppercase 0.07em tracking · input bg: --cream · focus: azure border + ring · card: white bg, 32px padding, rlg radius</div>
+    </div>
+
+    <!-- Process Steps -->
+    <div class="guide-card">
+      <h3>Process Steps (7-col, horizontal connector line)</h3>
+      <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:0;position:relative;margin-top:20px;">
+        <div style="position:absolute;top:25px;left:calc(7.14%);right:calc(7.14%);height:1.5px;background:var(--border);z-index:0;"></div>
+        <div style="display:flex;flex-direction:column;align-items:center;position:relative;z-index:1;">
+          <div class="proc-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:18px;height:18px"><path d="M9 12h6M9 16h6M9 8h6M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2z"></path></svg></div>
+          <div class="proc-title-sm">Enquiry</div>
+          <div class="proc-desc-sm">Submit your requirements</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;position:relative;z-index:1;">
+          <div class="proc-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:18px;height:18px"><path d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5"></path></svg></div>
+          <div class="proc-title-sm">Design</div>
+          <div class="proc-desc-sm">Mockups & approval</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;position:relative;z-index:1;">
+          <div class="proc-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:18px;height:18px"><path d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg></div>
+          <div class="proc-title-sm">Sampling</div>
+          <div class="proc-desc-sm">Physical sample review</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;position:relative;z-index:1;">
+          <div class="proc-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:18px;height:18px"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></div>
+          <div class="proc-title-sm">Order</div>
+          <div class="proc-desc-sm">Confirm & place order</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;position:relative;z-index:1;">
+          <div class="proc-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:18px;height:18px"><path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg></div>
+          <div class="proc-title-sm">Production</div>
+          <div class="proc-desc-sm">30–45 day manufacture</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;position:relative;z-index:1;">
+          <div class="proc-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:18px;height:18px"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
+          <div class="proc-title-sm">QA</div>
+          <div class="proc-desc-sm">Inspection & testing</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;position:relative;z-index:1;">
+          <div class="proc-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:18px;height:18px"><path d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg></div>
+          <div class="proc-title-sm">Delivery</div>
+          <div class="proc-desc-sm">Global shipping</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Band -->
+    <div class="guide-card">
+      <h3>CTA Band (dark section)</h3>
+      <div class="cta-demo">
+        <div class="cta-demo-inner">
+          <div class="cta-label-demo">Start Your Order Today</div>
+          <div class="cta-title-demo">Ready to Manufacture<br>Without Limits?</div>
+          <div class="cta-body-demo">Get in touch with our team to discuss your uniform requirements. Factory-direct pricing, no minimums, global delivery.</div>
+          <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;">
+            <button class="btn-white">Request a Quote <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></button>
+            <button class="btn-ol-white">View Our Range</button>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,.08);flex-wrap:wrap;">
+            <span style="font-size:11.5px;color:rgba(255,255,255,.4);">🇦🇺 Australia</span>
+            <span style="color:rgba(255,255,255,.15);">·</span>
+            <span style="font-size:11.5px;color:rgba(255,255,255,.4);">🇳🇿 New Zealand</span>
+            <span style="color:rgba(255,255,255,.15);">·</span>
+            <span style="font-size:11.5px;color:rgba(255,255,255,.4);">🇬🇧 United Kingdom</span>
+            <span style="color:rgba(255,255,255,.15);">·</span>
+            <span style="font-size:11.5px;color:rgba(255,255,255,.4);">🇺🇸 USA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="guide-card">
+      <h3>Footer</h3>
+      <div class="footer-demo">
+        <div style="display:grid;grid-template-columns:1.7fr 1fr 1fr 1.4fr;gap:32px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.06);">
+          <div>
+            <div class="footer-logo-name">Cotton Haven</div>
+            <div class="footer-logo-sub">Australia</div>
+            <div class="footer-desc">Australian-owned premium uniform manufacturer with 30+ years of experience across corporate, healthcare, school and hospitality sectors.</div>
+            <div class="footer-gold">EST. 1990</div>
+          </div>
+          <div>
+            <div class="footer-col-title-demo">Quick Links</div>
+            <a class="footer-link-demo" href="#">Home</a>
+            <a class="footer-link-demo" href="#">About Us</a>
+            <a class="footer-link-demo" href="#">Our Range</a>
+            <a class="footer-link-demo" href="#">Fabrics</a>
+            <a class="footer-link-demo" href="#">Contact Us</a>
+          </div>
+          <div>
+            <div class="footer-col-title-demo">Products</div>
+            <a class="footer-link-demo" href="#">Corporate Uniforms</a>
+            <a class="footer-link-demo" href="#">Healthcare Uniforms</a>
+            <a class="footer-link-demo" href="#">School Uniforms</a>
+            <a class="footer-link-demo" href="#">Hospitality</a>
+          </div>
+          <div>
+            <div class="footer-col-title-demo">Global Offices</div>
+            <div style="font-size:11.5px;color:rgba(255,255,255,.4);margin-bottom:10px;line-height:1.6;">
+              <strong style="font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7);display:block;margin-bottom:2px;">Australia</strong>
+              Sydney, NSW 2000
+            </div>
+            <div style="font-size:11.5px;color:rgba(255,255,255,.4);line-height:1.6;">
+              <strong style="font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7);display:block;margin-bottom:2px;">India</strong>
+              Manufacturing HQ
+            </div>
+          </div>
+        </div>
+        <div style="padding-top:14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
+          <div style="font-size:11.5px;color:rgba(255,255,255,.22);">© 2024 Cotton Haven Australia. All rights reserved.</div>
+          <div style="display:flex;gap:7px;">
+            <button style="width:29px;height:29px;border-radius:50%;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;background:none;cursor:pointer;">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width:12px;height:12px;color:rgba(255,255,255,.4)"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </button>
+            <button style="width:29px;height:29px;border-radius:50%;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;background:none;cursor:pointer;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:12px;height:12px;color:rgba(255,255,255,.4)"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </button>
+            <button style="width:29px;height:29px;border-radius:50%;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;background:none;cursor:pointer;">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width:12px;height:12px;color:rgba(255,255,255,.4)"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══ 6. ANIMATION & INTERACTION ══ -->
+  <div class="guide-section">
+    <div class="section-label">06</div>
+    <h2 class="guide-h2">Animation & Interaction</h2>
+
+    <div class="guide-card">
+      <h3>Reveal Animations (scroll-triggered)</h3>
+      <div style="font-size:13.5px;color:var(--ink-60);line-height:2;">
+        <div><strong style="color:var(--ink)">.reveal</strong> — opacity:0 + translateY(20px) → visible: opacity:1 + none · 0.65s var(--ease)</div>
+        <div><strong style="color:var(--ink)">.rd1</strong> — transition-delay: 0.1s</div>
+        <div><strong style="color:var(--ink)">.rd2</strong> — transition-delay: 0.2s</div>
+        <div><strong style="color:var(--ink)">.rd3</strong> — transition-delay: 0.3s</div>
+        <div><strong style="color:var(--ink)">.rd4</strong> — transition-delay: 0.4s</div>
+        <div style="margin-top:8px;font-size:12px;color:var(--ink-30);">Add .visible class via IntersectionObserver. Respects prefers-reduced-motion.</div>
+      </div>
+    </div>
+
+    <div class="guide-card">
+      <h3>Hover States Summary</h3>
+      <div style="font-size:13px;color:var(--ink-60);line-height:2.2;">
+        <div><strong style="color:var(--ink)">Cards (industry, product, related):</strong> translateY(-3 to -5px) + shadow + azure border tint</div>
+        <div><strong style="color:var(--ink)">Feature cards:</strong> translateY(-3px) + azure bottom border scaleX(0→1)</div>
+        <div><strong style="color:var(--ink)">Nav links:</strong> azure text + azure-xl background</div>
+        <div><strong style="color:var(--ink)">.btn-primary / .btn-cta:</strong> azure-d bg + translateY(-1px) + azure shadow</div>
+        <div><strong style="color:var(--ink)">.btn-secondary:</strong> azure border + azure text</div>
+        <div><strong style="color:var(--ink)">Arrow icon in buttons:</strong> translateX(3px) on hover</div>
+        <div><strong style="color:var(--ink)">Image zoom (cards):</strong> scale(1.05–1.06) on parent hover · 0.4–0.5s ease</div>
+        <div><strong style="color:var(--ink)">Why items:</strong> azure-xl background + azure-25% border</div>
+        <div><strong style="color:var(--ink)">Nav dropdown:</strong> opacity + visibility + translateY(6px→4px) · 0.2s</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══ 7. PAGE STRUCTURE ══ -->
+  <div class="guide-section">
+    <div class="section-label">07</div>
+    <h2 class="guide-h2">Page Structure & Sections</h2>
+
+    <div class="guide-card">
+      <h3>Standard Page Anatomy</h3>
+      <div style="font-size:13px;color:var(--ink-60);line-height:2.2;">
+        <div style="display:flex;gap:12px;align-items:baseline;"><span style="font-size:11px;font-weight:700;color:var(--azure);font-family:monospace;min-width:140px;">&lt;topbar&gt;</span> ink bg · contact info + locale · 8px padding</div>
+        <div style="display:flex;gap:12px;align-items:baseline;"><span style="font-size:11px;font-weight:700;color:var(--azure);font-family:monospace;min-width:140px;">&lt;site-header&gt;</span> sticky · white 97% + blur · logo + nav + CTA button</div>
+        <div style="display:flex;gap:12px;align-items:baseline;"><span style="font-size:11px;font-weight:700;color:var(--azure);font-family:monospace;min-width:140px;">&lt;hero / page-banner&gt;</span> hero (home) or page-banner (inner pages)</div>
+        <div style="display:flex;gap:12px;align-items:baseline;"><span style="font-size:11px;font-weight:700;color:var(--azure);font-family:monospace;min-width:140px;">&lt;market-strip&gt;</span> azure bg · market flags · 13px padding</div>
+        <div style="display:flex;gap:12px;align-items:baseline;"><span style="font-size:11px;font-weight:700;color:var(--azure);font-family:monospace;min-width:140px;">&lt;.section&gt;</span> white bg · 88px vertical padding</div>
+        <div style="display:flex;gap:12px;align-items:baseline;"><span style="font-size:11px;font-weight:700;color:var(--azure);font-family:monospace;min-width:140px;">&lt;.section-cream&gt;</span> cream bg · alternates with white sections</div>
+        <div style="display:flex;gap:12px;align-items:baseline;"><span style="font-size:11px;font-weight:700;color:var(--azure);font-family:monospace;min-width:140px;">&lt;.cta-band&gt;</span> ink bg · 72px padding · centred CTA content</div>
+        <div style="display:flex;gap:12px;align-items:baseline;"><span style="font-size:11px;font-weight:700;color:var(--azure);font-family:monospace;min-width:140px;">&lt;.site-footer&gt;</span> rgb(8,15,24) · 4-col grid · 56px top padding</div>
+      </div>
+    </div>
+
+    <div class="guide-card">
+      <h3>Navigation Pages</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;">
+        <span class="cat-tag">Home</span>
+        <span class="cat-tag">About Us</span>
+        <span class="cat-tag">Corporate Uniforms</span>
+        <span class="cat-tag">Healthcare Uniforms</span>
+        <span class="cat-tag">School Uniforms</span>
+        <span class="cat-tag">Hospitality Uniforms</span>
+        <span class="cat-tag">Industrial & Workwear</span>
+        <span class="cat-tag">Sportswear & Teamwear</span>
+        <span class="cat-tag">Promotional Apparel</span>
+        <span class="cat-tag">Private Label Clothing</span>
+        <span class="cat-tag">Fabrics</span>
+        <span class="cat-tag">Manufacturing</span>
+        <span class="cat-tag">Quality Assurance</span>
+        <span class="cat-tag">Contact Us</span>
+      </div>
+    </div>
+
+    <div class="guide-card">
+      <h3>Contact Details</h3>
+      <div style="font-size:13.5px;color:var(--ink-60);line-height:2.2;">
+        <div><strong style="color:var(--ink)">Email:</strong> info@cottonhaven.com</div>
+        <div><strong style="color:var(--ink)">Phone (AU):</strong> 1300 171 709</div>
+        <div><strong style="color:var(--ink)">Hours:</strong> Mon–Fri 09:00–18:00 IST</div>
+        <div><strong style="color:var(--ink)">Markets:</strong> Australia · New Zealand · UK · USA · Europe</div>
+        <div><strong style="color:var(--ink)">Facilities:</strong> 🇦🇺 Australian Owned · 🏭 India & Bangladesh manufacturing</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /guide-wrap -->
+</body>
+</html>
