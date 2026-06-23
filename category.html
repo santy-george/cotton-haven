@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-title">Uniforms Range — Cotton Haven Australia</title>
+  <meta name="description" content="Cotton Haven Australia supplies premium custom uniforms and wholesale apparel. Australian-owned factory-direct manufacturer.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    @charset "utf-8";
+
+    :root {
+      --ink: #0C1B2B;
+      --ink-60: rgba(12,27,43,.6);
+      --ink-30: rgba(12,27,43,.3);
+      --ink-10: rgba(12,27,43,.07);
+      --azure: #1A5F8E;
+      --azure-d: #155a8c;
+      --azure-xl: #EBF4FB;
+      --gold: #B8892A;
+      --gold-bg: #F5EDD8;
+      --cream: #F8F5F0;
+      --white: #FFFFFF;
+      --border: rgba(12,27,43,.1);
+      --border-s: rgba(12,27,43,.18);
+      --r: 4px;
+      --rlg: 8px;
+      --ease: cubic-bezier(.25,.46,.45,.94);
+    }
+
+    *, ::before, ::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: "DM Sans", sans-serif; color: var(--ink); background: var(--white); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+    /* ── UTILITIES ── */
+    .serif { font-family: "Cormorant Garamond", serif; }
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--azure); }
+    .eyebrow::before { content: ""; display: block; width: 24px; height: 1.5px; background: var(--azure); }
+    .section-title { font-family: "Cormorant Garamond", serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 600; line-height: 1.12; letter-spacing: -0.01em; color: var(--ink); margin-top: 12px; }
+    .section-sub { font-size: 15px; color: var(--ink-60); line-height: 1.7; margin-top: 12px; }
+    .section { padding: 88px 0; }
+    .section-cream { background: var(--cream); }
+    .section + .section { padding-top: 0; }
+    .section-cream + .section, .section + .section-cream { padding-top: 88px; }
+
+    /* ── BUTTONS ── */
+    .btn-primary { font-size: 14px; font-weight: 600; color: var(--white); background: var(--azure); padding: 13px 26px; border-radius: var(--r); transition: .2s; display: inline-flex; align-items: center; gap: 7px; cursor: pointer; }
+    .btn-primary:hover { background: var(--azure-d); transform: translateY(-1px); box-shadow: rgba(26,95,142,.28) 0 6px 18px; }
+    .btn-primary svg { width: 14px; height: 14px; transition: transform .2s; }
+    .btn-primary:hover svg { transform: translateX(3px); }
+    .btn-secondary { font-size: 14px; font-weight: 500; color: var(--ink); padding: 12px 22px; border-radius: var(--r); border: 1.5px solid var(--border-s); transition: .2s; display: inline-flex; align-items: center; gap: 7px; }
+    .btn-secondary:hover { border-color: var(--azure); color: var(--azure); }
+    .btn-white { font-size: 14px; font-weight: 600; background: var(--white); color: var(--azure); padding: 13px 26px; border-radius: var(--r); transition: .2s; display: inline-flex; align-items: center; gap: 7px; }
+    .btn-white:hover { background: #f0f7ff; transform: translateY(-1px); }
+    .btn-white svg { width: 14px; height: 14px; transition: transform .2s; }
+    .btn-white:hover svg { transform: translateX(3px); }
+    .btn-ol-white { font-size: 14px; font-weight: 500; color: rgba(255,255,255,.8); padding: 12px 22px; border-radius: var(--r); border: 1px solid rgba(255,255,255,.25); transition: .2s; display: inline-flex; align-items: center; gap: 7px; }
+    .btn-ol-white:hover { border-color: rgba(255,255,255,.5); color: #fff; }
+
+    /* ── TOPBAR ── */
+    .topbar { background: var(--ink); padding: 8px 0; font-size: 12px; color: rgba(255,255,255,.6); }
+    .tb-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+    .tb-left, .tb-right { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+    .tb-item { display: flex; align-items: center; gap: 5px; }
+    .tb-item a { color: rgba(255,255,255,.6); transition: color .2s; }
+    .tb-item a:hover { color: #fff; }
+    .tb-sep { width: 1px; height: 10px; background: rgba(255,255,255,.15); }
+
+    /* ── HEADER ── */
+    .site-header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .hdr-inner { display: flex; align-items: center; justify-content: space-between; padding: 15px 28px; max-width: 1200px; margin: 0 auto; gap: 20px; }
+    .logo { flex-shrink: 0; display: flex; flex-direction: column; gap: 1px; cursor: pointer; }
+    .logo-name { font-family: "Cormorant Garamond", serif; font-size: 21px; font-weight: 600; color: var(--ink); line-height: 1; letter-spacing: .02em; }
+    .logo-sub { font-size: 9px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--azure); }
+    .main-nav { display: flex; align-items: center; gap: 1px; flex: 1; justify-content: center; position: relative; }
+    .nav-link { font-size: 12.5px; font-weight: 500; color: var(--ink-60); padding: 7px 11px; border-radius: var(--r); transition: .2s; white-space: nowrap; cursor: pointer; background: none; font-family: inherit; }
+    .nav-link:hover, .nav-link.active { color: var(--azure); background: var(--azure-xl); }
+    .nav-item { position: relative; }
+    .nav-dropdown { position: absolute; top: 100%; left: 0; background: var(--white); border: 1px solid var(--border); border-radius: var(--rlg); box-shadow: rgba(12,27,43,.12) 0 12px 32px; padding: 8px; min-width: 220px; opacity: 0; visibility: hidden; transform: translateY(6px); transition: .2s; z-index: 50; }
+    .nav-item:hover .nav-dropdown { opacity: 1; visibility: visible; transform: translateY(4px); }
+    .nav-dropdown button, .nav-dropdown a { display: block; width: 100%; text-align: left; padding: 9px 12px; font-size: 13px; color: var(--ink-60); border-radius: var(--r); transition: .15s; }
+    .nav-dropdown button:hover, .nav-dropdown a:hover { background: var(--azure-xl); color: var(--azure); }
+    .hdr-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .btn-cta { font-size: 13px; font-weight: 600; color: var(--white); background: var(--azure); padding: 9px 18px; border-radius: var(--r); transition: .2s; display: inline-flex; align-items: center; gap: 6px; cursor: pointer; white-space: nowrap; }
+    .btn-cta:hover { background: var(--azure-d); transform: translateY(-1px); box-shadow: rgba(26,95,142,.28) 0 6px 18px; }
+    .btn-cta svg { width: 13px; height: 13px; transition: transform .2s; }
+    .btn-cta:hover svg { transform: translateX(3px); }
+    .mob-menu-btn { display: none; flex-direction: column; gap: 5px; padding: 8px; cursor: pointer; }
+    .mob-menu-btn span { display: block; width: 22px; height: 1.5px; background: var(--ink); transition: .3s; }
+    .mob-nav { display: none; flex-direction: column; background: var(--white); border-top: 1px solid var(--border); padding: 12px 20px 20px; max-height: 75vh; overflow-y: auto; }
+    .mob-nav .nav-link { display: block; padding: 10px 14px; font-size: 15px; }
+    .mob-nav .mob-group-label { font-size: 10.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-30); padding: 14px 14px 4px; }
+    .mob-nav.open { display: flex; }
+
+    /* ── PAGE BANNER ── */
+    .page-banner { position: relative; height: 280px; overflow: hidden; display: flex; align-items: flex-end; padding-bottom: 40px; }
+    .page-banner-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center center; }
+    .page-banner-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(12,27,43,.85) 0%, rgba(12,27,43,.4) 60%, rgba(12,27,43,.2) 100%); }
+    .page-banner-content { position: relative; z-index: 1; padding: 0 32px; max-width: 1200px; margin: 0 auto; width: 100%; }
+    .page-banner-title { font-family: "Cormorant Garamond", serif; font-size: clamp(36px, 4.5vw, 58px); font-weight: 600; color: var(--white); line-height: 1.1; margin-bottom: 10px; }
+    .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: rgba(255,255,255,.55); }
+    .breadcrumb a { color: rgba(255,255,255,.55); transition: color .2s; }
+    .breadcrumb a:hover { color: #fff; }
+    .breadcrumb span { color: rgba(255,255,255,.35); }
+
+    /* ── MARKET STRIP ── */
+    .market-strip { background: var(--azure); padding: 13px 0; }
+    .mkt-inner { display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; }
+    .mkt-item { display: flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 500; color: rgba(255,255,255,.88); white-space: nowrap; }
+    .mkt-sep { color: rgba(255,255,255,.25); font-size: 16px; }
+
+    /* ── INTRO SPLIT ── */
+    .intro-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; align-items: center; }
+    .intro-img-wrap { position: relative; border-radius: var(--rlg); overflow: hidden; height: 380px; background: var(--azure-xl); display: flex; align-items: center; justify-content: center; }
+    .intro-placeholder-icon { width: 120px; height: 120px; color: rgba(26,95,142,.2); }
+    .intro-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border-radius: var(--rlg); overflow: hidden; margin-top: 28px; }
+    .istat { background: var(--white); padding: 16px 12px; text-align: center; }
+    .istat-num { font-family: "Cormorant Garamond", serif; font-size: 24px; font-weight: 600; color: var(--azure); line-height: 1; }
+    .istat-label { font-size: 10px; color: var(--ink-60); margin-top: 4px; line-height: 1.3; }
+
+    /* ── PRODUCTS GRID ── */
+    .prod-header { text-align: center; max-width: 600px; margin: 0 auto 48px; }
+    .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .prod-card { border-radius: var(--rlg); overflow: hidden; border: 1px solid var(--border); background: var(--white); transition: all .3s var(--ease); display: flex; flex-direction: column; height: 100%; }
+    .prod-card:hover { transform: translateY(-5px); box-shadow: rgba(12,27,43,.1) 0 16px 40px; border-color: rgba(26,95,142,.25); }
+    .prod-img { height: 180px; overflow: hidden; position: relative; background: var(--cream); display: flex; align-items: center; justify-content: center; }
+    .prod-placeholder-icon { width: 64px; height: 64px; color: rgba(12,27,43,.12); }
+    .prod-body { padding: 18px 20px 20px; display: flex; flex-direction: column; flex: 1; }
+    .prod-tag { display: inline-block; align-self: flex-start; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--azure); background: var(--azure-xl); padding: 3px 8px; border-radius: 3px; margin-bottom: 10px; }
+    .prod-name { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 7px; }
+    .prod-desc { font-size: 12.5px; color: var(--ink-60); line-height: 1.6; margin-bottom: 14px; flex: 1; }
+    .prod-link { font-size: 12px; font-weight: 600; color: var(--azure); display: inline-flex; align-items: center; gap: 4px; transition: gap .2s; cursor: pointer; }
+    .prod-card:hover .prod-link { gap: 8px; }
+    .prod-link svg { width: 11px; height: 11px; }
+
+    /* ── FABRICS ── */
+    .fabrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .fabric-card { padding: 24px 20px; border-radius: var(--rlg); border: 1px solid var(--border); background: var(--white); transition: all .25s; }
+    .fabric-card:hover { border-color: rgba(26,95,142,.2); box-shadow: rgba(12,27,43,.06) 0 8px 24px; }
+    .fabric-tag { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .fabric-name { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+    .fabric-desc { font-size: 12.5px; color: var(--ink-60); line-height: 1.65; }
+
+    /* ── CTA BAND ── */
+    .cta-band { background: var(--ink); padding: 72px 0; text-align: center; position: relative; overflow: hidden; }
+    .cta-band::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 60% 50%, rgba(26,95,142,.35) 0%, transparent 70%); }
+    .cta-band .container { position: relative; z-index: 1; }
+    .cta-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.55); margin-bottom: 16px; }
+    .cta-eyebrow::before { content: ""; display: block; width: 24px; height: 1.5px; background: rgba(255,255,255,.4); }
+    .cta-title { font-family: "Cormorant Garamond", serif; font-size: clamp(30px, 4vw, 50px); font-weight: 600; color: var(--white); line-height: 1.1; margin-bottom: 16px; }
+    .cta-sub { font-size: 15px; color: rgba(255,255,255,.6); max-width: 560px; margin: 0 auto 36px; line-height: 1.7; }
+    .cta-actions { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+    /* ── FOOTER ── */
+    .site-footer { background: var(--ink); color: rgba(255,255,255,.6); padding: 60px 0 0; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .footer-logo-name { font-family: "Cormorant Garamond", serif; font-size: 22px; font-weight: 600; color: var(--white); line-height: 1; letter-spacing: .02em; cursor: pointer; }
+    .footer-logo-sub { font-size: 9px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--azure); margin-top: 2px; }
+    .footer-about { font-size: 12.5px; line-height: 1.75; color: rgba(255,255,255,.45); margin-top: 14px; max-width: 280px; }
+    .footer-col-title { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: 16px; }
+    .footer-links { display: flex; flex-direction: column; gap: 8px; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,.5); text-align: left; transition: color .2s; display: block; }
+    .footer-links a:hover { color: rgba(255,255,255,.88); }
+    .footer-offices { display: flex; flex-direction: column; gap: 14px; }
+    .office-blk { font-size: 11.5px; color: rgba(255,255,255,.4); line-height: 1.65; }
+    .office-blk strong { display: block; color: rgba(255,255,255,.65); font-weight: 600; margin-bottom: 2px; }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,.25); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 880px) {
+      .intro-grid { grid-template-columns: 1fr; gap: 32px; }
+      .main-nav { display: none; }
+      .mob-menu-btn { display: flex; }
+      .fabrics-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .container { padding: 0 18px; }
+      .hdr-inner { padding: 13px 18px; }
+      .section { padding: 52px 0; }
+      .page-banner { height: 220px; }
+      .products-grid { grid-template-columns: 1fr; }
+      .fabrics-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .cta-actions { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition-duration: .01ms !important; }
+    }
+  </style>
+  
+  <link rel="stylesheet" href="assets/css/cart.css">
+</head>
+<body>
+
+  <!-- ══ TOPBAR ══ -->
+  <div class="topbar">
+    <div class="container">
+      <div class="tb-inner">
+        <div class="tb-left">
+          <span class="tb-item">
+            <svg width="11" height="11" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M2 4l6 5 6-5"></path><rect x="1" y="3" width="14" height="10" rx="1.5"></rect>
+            </svg>
+            <a href="mailto:info@cottonhaven.com.au">info@cottonhaven.com.au</a>
+          </span>
+          <span class="tb-sep"></span>
+          <span class="tb-item">
+            <svg width="11" height="11" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M2 3.5A1.5 1.5 0 013.5 2h1.2a.5.5 0 01.48.36l.8 2.8a.5.5 0 01-.14.52l-1.1 1a8 8 0 004.58 4.58l1-.1a.5.5 0 01.52.14l2.8.8a.5.5 0 01.36.48v1.2A1.5 1.5 0 0112.5 14C6.7 14 2 9.3 2 3.5z"></path>
+            </svg>
+            <a href="tel:1300171709">1300 171 709 (AU)</a>
+          </span>
+        </div>
+        <div class="tb-right">
+          <span>Factory-Direct Wholesale Supply</span>
+          <span class="tb-sep"></span>
+          <span style="color:#B8892A;font-weight:600">No Minimum Order Value</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ HEADER ══ -->
+  <header class="site-header">
+    <div class="hdr-inner">
+      <div class="logo" onclick="window.location.href='index.html'">
+        <span class="logo-name">Cotton Haven</span>
+        <span class="logo-sub">Australia</span>
+      </div>
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="index.html#about" class="nav-link">About Us</a>
+
+        <div class="nav-item">
+          <button class="nav-link active">Our Range ▾</button>
+          <div class="nav-dropdown">
+            <a href="corporate-uniforms.html" style="display:block;width:100%;text-align:left;padding:9px 12px;font-size:13px;color:var(--ink-60);border-radius:var(--r);transition:.15s;">Corporate Uniforms</a>
+            <a href="category.html?cat=healthcare" style="display:block;width:100%;text-align:left;padding:9px 12px;font-size:13px;color:var(--ink-60);border-radius:var(--r);transition:.15s;">Healthcare Uniforms</a>
+            <a href="category.html?cat=school" style="display:block;width:100%;text-align:left;padding:9px 12px;font-size:13px;color:var(--ink-60);border-radius:var(--r);transition:.15s;">School Uniforms</a>
+            <a href="category.html?cat=hospitality" style="display:block;width:100%;text-align:left;padding:9px 12px;font-size:13px;color:var(--ink-60);border-radius:var(--r);transition:.15s;">Hospitality Uniforms</a>
+            <a href="category.html?cat=industrial" style="display:block;width:100%;text-align:left;padding:9px 12px;font-size:13px;color:var(--ink-60);border-radius:var(--r);transition:.15s;">Industrial &amp; Workwear</a>
+            <a href="category.html?cat=sportswear" style="display:block;width:100%;text-align:left;padding:9px 12px;font-size:13px;color:var(--ink-60);border-radius:var(--r);transition:.15s;">Sportswear &amp; Teamwear</a>
+            <a href="category.html?cat=promotional" style="display:block;width:100%;text-align:left;padding:9px 12px;font-size:13px;color:var(--ink-60);border-radius:var(--r);transition:.15s;">Promotional Apparel</a>
+            <a href="category.html?cat=private-label" style="display:block;width:100%;text-align:left;padding:9px 12px;font-size:13px;color:var(--ink-60);border-radius:var(--r);transition:.15s;">Private Label Clothing</a>
+          </div>
+        </div>
+
+        <a href="index.html#fabrics" class="nav-link">Fabrics</a>
+        <a href="index.html#manufacturing" class="nav-link">Manufacturing</a>
+        <a href="index.html#contact" class="nav-link">Contact Us</a>
+      </nav>
+      <div class="hdr-right">
+        <button class="btn-cta" onclick="window.location.hash='#enquire'">Request a Quote <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></button>
+        <div class="mob-menu-btn"><span></span><span></span><span></span></div>
+      </div>
+    </div>
+    
+    <nav class="mob-nav" id="mob-nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="index.html#about" class="nav-link">About Us</a>
+      <div class="mob-group-label">Our Range</div>
+      <a href="corporate-uniforms.html" class="nav-link">Corporate Uniforms</a>
+      <a href="category.html?cat=healthcare" class="nav-link">Healthcare Uniforms</a>
+      <a href="category.html?cat=school" class="nav-link">School Uniforms</a>
+      <a href="category.html?cat=hospitality" class="nav-link">Hospitality Uniforms</a>
+      <a href="category.html?cat=industrial" class="nav-link">Industrial &amp; Workwear</a>
+      <a href="category.html?cat=sportswear" class="nav-link">Sportswear &amp; Teamwear</a>
+      <a href="category.html?cat=promotional" class="nav-link">Promotional Apparel</a>
+      <a href="category.html?cat=private-label" class="nav-link">Private Label Clothing</a>
+      <div class="mob-group-label">Company</div>
+      <a href="index.html#fabrics" class="nav-link">Fabrics</a>
+      <a href="index.html#manufacturing" class="nav-link">Manufacturing</a>
+      <a href="index.html#contact" class="nav-link">Contact Us</a>
+    </nav>
+  </header>
+
+  <!-- ══ PAGE BANNER ══ -->
+  <div class="page-banner" id="cat-banner" style="background: linear-gradient(135deg, #0C1B2B 0%, #1A5F8E 100%);">
+    <div class="page-banner-overlay"></div>
+    <div class="page-banner-content">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>›</span>
+        <span style="color: rgba(255,255,255,0.8)" id="breadcrumb-category">Uniforms Range</span>
+      </div>
+      <h1 class="page-banner-title" id="banner-title">Uniforms Range</h1>
+    </div>
+  </div>
+
+  <!-- ══ MARKET STRIP ══ -->
+  <div class="market-strip">
+    <div class="container">
+      <div class="mkt-inner">
+        <div class="mkt-item">✓ Australian Owned &amp; Operated</div>
+        <div class="mkt-sep">·</div>
+        <div class="mkt-item">✓ Premium Custom Embroidery</div>
+        <div class="mkt-sep">·</div>
+        <div class="mkt-item">✓ Ethically Manufactured &amp; Certified</div>
+        <div class="mkt-sep">·</div>
+        <div class="mkt-item">✓ Rapid Turnaround Australia-Wide</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ INTRO SECTION ══ -->
+  <section class="section">
+    <div class="container">
+      <div class="intro-grid">
+        <div class="intro-img-wrap">
+          <!-- Dynamic Category Vector Icon -->
+          <svg class="intro-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M20.37 8.12l-7.79-4.5a1.76 1.76 0 00-1.74 0L3.06 8.12a1.76 1.76 0 00-.88 1.52v9a1.76 1.76 0 00.88 1.52l7.79 4.5a1.76 1.76 0 001.74 0l7.79-4.5a1.76 1.76 0 00.88-1.52v-9a1.76 1.76 0 00-.89-1.52z" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2.27 8.5L12 14l9.73-5.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 22.5V14" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="intro-text-wrap">
+          <span class="eyebrow" id="intro-eyebrow">Professional Range</span>
+          <h2 class="section-title" id="intro-title">Elevate Your Team's Standard</h2>
+          <p class="section-sub" id="intro-desc" style="margin-top: 18px; font-size: 15.5px; line-height: 1.8;">
+            Cotton Haven Australia designs and manufactures custom uniforms tailored for performance. We provide fully customizable designs, flexible low MOQs, and direct wholesale supply worldwide.
+          </p>
+          <div class="intro-stats">
+            <div class="istat">
+              <span class="istat-num serif">30+</span>
+              <span class="istat-label">Years Apparel Experience</span>
+            </div>
+            <div class="istat">
+              <span class="istat-num serif">100%</span>
+              <span class="istat-label">Cotton Haven Quality</span>
+            </div>
+            <div class="istat">
+              <span class="istat-num serif">Wholesale</span>
+              <span class="istat-label">Direct From Factory</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PRODUCTS CATALOG ══ -->
+  <section class="section section-cream">
+    <div class="container">
+      <div class="prod-header">
+        <span class="eyebrow">Interactive Catalog</span>
+        <h2 class="section-title">Explore Sub-categories</h2>
+        <p class="section-sub">Select a category below, view options to configure sizes, colors, and quantities, and add them to your custom uniform enquiry.</p>
+      </div>
+      <div class="products-grid" id="category-products-grid">
+        <!-- Products cards rendered dynamically via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FABRICS ══ -->
+  <section class="section">
+    <div class="container">
+      <div style="text-align:center;max-width:600px;margin:0 auto 48px">
+        <span class="eyebrow">Fabric Engineering</span>
+        <h2 class="section-title">Premium Fabric Selections</h2>
+        <p class="section-sub">All Cotton Haven garments utilize fabrics certified for colorfastness, durability, and comfort under demanding work conditions.</p>
+      </div>
+      <div class="fabrics-grid">
+        <div class="fabric-card">
+          <span class="fabric-tag">Breathability</span>
+          <h3 class="fabric-name">Cotton-Rich Blends</h3>
+          <p class="fabric-desc">Combines the soft comfort of long-staple cotton with the durability and wash-and-wear convenience of performance polyester.</p>
+        </div>
+        <div class="fabric-card">
+          <span class="fabric-tag">Durability</span>
+          <h3 class="fabric-name">Active Stretch Canvas</h3>
+          <p class="fabric-desc">Heavy-duty drill and canvas featuring spandex fibers for flexibility, ideal for heavy labor and active environments.</p>
+        </div>
+        <div class="fabric-card">
+          <span class="fabric-tag">Hygiene</span>
+          <h3 class="fabric-name">Antimicrobial Tech</h3>
+          <p class="fabric-desc">Specially formulated fabric finishes that resist bacterial growth and odor absorption, perfect for medical scrub ranges.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CTA BAND ══ -->
+  <section class="cta-band">
+    <div class="container">
+      <span class="cta-eyebrow">Have Specific Requirements?</span>
+      <h2 class="cta-title">Customize Your Team's Program</h2>
+      <p class="cta-sub">Our in-house design team can customize patterns, colors, and decoration methods to match your brand specifications.</p>
+      <div class="cta-actions">
+        <button class="btn-white" onclick="window.location.hash='#enquire'">Request a Quote <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></button>
+        <a href="index.html#contact" class="btn-ol-white">Contact Sales Team</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo-name" onclick="window.location.href='index.html'">Cotton Haven</div>
+          <div class="footer-logo-sub">Australia</div>
+          <p class="footer-about">Australian-owned uniform manufacturer supplying premium apparel direct to businesses, organizations, and private labels globally since 1994.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Our Ranges</div>
+          <div class="footer-links">
+            <a href="corporate-uniforms.html">Corporate Uniforms</a>
+            <a href="category.html?cat=healthcare">Healthcare Uniforms</a>
+            <a href="category.html?cat=school">School Uniforms</a>
+            <a href="category.html?cat=hospitality">Hospitality Uniforms</a>
+            <a href="category.html?cat=industrial">Industrial &amp; Workwear</a>
+            <a href="category.html?cat=sportswear">Sportswear &amp; Teamwear</a>
+            <a href="category.html?cat=promotional">Promotional Apparel</a>
+            <a href="category.html?cat=private-label">Private Label Clothing</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Company</div>
+          <div class="footer-links">
+            <a href="index.html#about">About Our Factory</a>
+            <a href="index.html#fabrics">Fabric Technologies</a>
+            <a href="index.html#manufacturing">Custom Manufacturing</a>
+            <a href="index.html#contact">Get in Touch</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Offices &amp; Contact</div>
+          <div class="footer-offices">
+            <div class="office-blk">
+              <strong>Sydney Headquarters</strong>
+              Suite 402, 100 George St,<br>The Rocks, NSW 2000
+            </div>
+            <div class="office-blk">
+              <strong>Phone Enquiry</strong>
+              <a href="tel:1300171709" style="color:var(--gold);font-weight:600">1300 171 709</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">© 2026 Cotton Haven Australia. All Rights Reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/products-data.js"></script>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/admin-portal.js"></script>
+
+  <script>
+    // Category Page Renderer Logic
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. Get Category ID from Query Parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      const catId = urlParams.get('cat') || 'healthcare'; // default fallback
+      
+      const catData = getCategoryData(catId);
+      if (!catData) {
+        console.error(`Invalid category ID: ${catId}`);
+        document.getElementById("banner-title").innerText = "Range Not Found";
+        document.getElementById("category-products-grid").innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 48px; color: var(--ink-60);">
+            <p>We apologize, but the requested uniforms range does not exist.</p>
+            <a href="index.html" class="btn-primary" style="margin-top: 16px;">Return to Home</a>
+          </div>
+        `;
+        return;
+      }
+
+      // 2. Update Page Meta & Banner Elements
+      document.title = `${catData.categoryName} — Cotton Haven Australia`;
+      document.getElementById("page-title").innerText = `${catData.categoryName} — Cotton Haven Australia`;
+      document.getElementById("banner-title").innerText = catData.categoryName;
+      document.getElementById("breadcrumb-category").innerText = catData.categoryName;
+      document.getElementById("intro-eyebrow").innerText = catData.categoryName;
+      document.getElementById("intro-title").innerText = `Premium ${catData.categoryName} Solutions`;
+
+      // Custom descriptions for categories
+      const descriptions = {
+        "healthcare": "Engineered for doctors, nurses, and allied health staff. Our clinical scrub and lab coat collections combine breathable stretch fabrics with Silvadur™ antimicrobial technology, ensuring maximum hygiene, fit, and daily comfort.",
+        "school": "Durable school uniforms designed to withstand daily school life. We manufacture high-performance polo shirts, formal blouses, skirts, and custom tracksuits that are easy-care, colorfast, and highly comfortable.",
+        "hospitality": "Professional chef jackets, aprons, and front-of-house apparel. Crafted with ventilation tech, spill-resistant coatings, and elegant tailoring to keep your culinary and service teams looking pristine.",
+        "industrial": "AS/NZS compliant high-visibility safety clothing and heavy-duty cargo drill workwear. Double-reinforced seams, multi-compartment utility pockets, and UV-protecting, heat-dissipating fabrics.",
+        "sportswear": "Activewear and matched warm-up sets designed for schools, clubs, and corporate events. High-performance, moisture-wicking cool dry mesh fabrics keep players dry and comfortable.",
+        "promotional": "Value-packed, retail-quality t-shirts, hoods, caps, and accessories tailored for corporate gifts, merch lines, and events. Perfect canvases for screen print, transfer, or embroidery.",
+        "private-label": "High-end heavyweight t-shirts and French Terry hoodies designed for apparel brands, labels, and custom merchandisers looking for wholesale rebranding options."
+      };
+      
+      document.getElementById("intro-desc").innerText = descriptions[catId] || catData.categoryName + " catalog collection.";
+
+      // 3. Render Product Cards dynamically
+      const grid = document.getElementById("category-products-grid");
+      grid.innerHTML = "";
+
+      const products = catData.products;
+      Object.keys(products).forEach(prodId => {
+        const product = products[prodId];
+        const card = document.createElement("article");
+        card.className = "prod-card";
+        card.setAttribute("data-category", catId);
+        card.setAttribute("data-product", prodId);
+
+        // Simple placeholder SVG icons corresponding to the product code prefix to look clean
+        const iconPaths = {
+          "HC-SCR": '<path d="M12 21a9 9 0 100-18 9 9 0 000 18z"/><path d="M9 12h6M12 9v6"/>',
+          "HC-LAB": '<path d="M19 4H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z"/><path d="M16 2v4M8 2v4M3 10h18"/>',
+          "SU-POL": '<path d="M20.37 8.12l-7.79-4.5a1.76 1.76 0 00-1.74 0L3.06 8.12a1.76 1.76 0 00-.88 1.52v9a1.76 1.76 0 00.88 1.52l7.79 4.5a1.76 1.76 0 001.74 0l7.79-4.5a1.76 1.76 0 00.88-1.52v-9a1.76 1.76 0 00-.89-1.52z"/>',
+          "SU-FOR": '<path d="M12 22a10 10 0 100-20 10 10 0 000 20z"/><path d="M2 12h20M12 2v20"/>',
+          "HP-CHF": '<path d="M12 12a5 5 0 100-10 5 5 0 000 10zM12 22v-5M17 17l-5-5-5 5"/>',
+          "HP-APR": '<path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4H6z"/>',
+          "IW-HIV": '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
+          "IW-PAN": '<path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>',
+          "SW-ATH": '<path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9z"/>',
+          "SW-OUT": '<path d="M12 21a9 9 0 100-18 9 9 0 000 18z"/>',
+          "PA-BSC": '<path d="M12 22a10 10 0 100-20 10 10 0 000 20z"/>',
+          "PA-CAP": '<path d="M12 14v-4M8 12h8M12 22a10 10 0 100-20 10 10 0 000 20z"/>',
+          "PL-PRM": '<polygon points="12 2 2 7 12 12 22 7 12 2"/>'
+        };
+
+        const prefix = product.codePrefix;
+        const iconSvg = iconPaths[prefix] || '<path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>';
+
+        card.innerHTML = `
+          <div class="prod-img">
+            <svg class="prod-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+              ${iconSvg}
+            </svg>
+          </div>
+          <div class="prod-body">
+            <span class="prod-tag">${product.codePrefix} Range</span>
+            <h3 class="prod-name">${product.name}</h3>
+            <p class="prod-desc">${product.description}</p>
+            <span class="prod-link" tabindex="0">
+              View details 
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 8h10M9 4l4 4-4 4"/>
+              </svg>
+            </span>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+      
+      // Mobile menu toggle helper inside category
+      const mobMenuBtn = document.querySelector('.mob-menu-btn');
+      const mobNav = document.getElementById('mob-nav');
+      if (mobMenuBtn && mobNav) {
+        mobMenuBtn.addEventListener('click', () => {
+          mobNav.classList.toggle('open');
+        });
+      }
+    });
+  </script>
+</body>
+</html>
